@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task8.</h1>
+    <script>
+        function calculateDemeritPoints(speed) {
+            const speedLimit = 70;
+            const kmPerDemeritPoint = 5;
+            const maxDemeritPoints = 12;
+
+            if (speed < speedLimit) {
+                console.log("Ok");
+            } else {
+                const demeritPoints = Math.floor((speed - speedLimit) / kmPerDemeritPoint);
+
+                if (demeritPoints > maxDemeritPoints) {
+                    console.log("License suspended");
+                } else {
+                    console.log("Points: " + demeritPoints);
+                }
+            }
+        }
+
+        const carSpeed = 80;
+        calculateDemeritPoints(carSpeed);
+
+    </script>
+</body>
+
+</html>

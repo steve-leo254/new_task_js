@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Task4.</h1>
+    <script>
+
+        // Import the readline module to get user input
+        const readline = require('readline');
+
+        // Create an interface to read input from the terminal
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+
+        // Function to validate an email
+        function isValidEmail(email) {
+            return email.includes('@') && email.includes('.');
+        }
+
+        // Prompt the user for an email
+        rl.question('Enter an email address: ', (email) => {
+            // Check if the entered email is valid
+            if (isValidEmail(email)) {
+                console.log('Valid email address!');
+            } else {
+                console.log('Invalid email address.');
+            }
+
+            // Close the interface
+            rl.close();
+        });
+
+    </script>
+</body>
+
+</html>

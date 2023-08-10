@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Payroll {
+            constructor(basicSalary, benefits) {
+                this.basicSalary = basicSalary;
+                this.benefits = benefits;
+            }
+
+            calculateNHIFDeductions(grossSalary) {
+                // ... calculate NHIF deductions based on the provided rates ...
+                // Return the calculated NHIF deductions
+            }
+
+            calculateNSSFDeductions(grossSalary) {
+                // ... calculate NSSF deductions based on the provided rates ...
+                // Return the calculated NSSF deductions
+            }
+
+            calculateGrossSalary() {
+                return this.basicSalary + this.benefits;
+            }
+
+            calculatePayee(taxableIncome) {
+                // ... calculate PAYEE based on the provided tax bands and rules ...
+                // Return the calculated PAYEE
+            }
+
+            calculateNetSalary() {
+                const grossSalary = this.calculateGrossSalary();
+                const nssfDeductions = this.calculateNSSFDeductions(grossSalary);
+                const nhifDeductions = this.calculateNHIFDeductions(grossSalary);
+
+                const taxableIncome = grossSalary - nssfDeductions;
+                const payee = this.calculatePayee(taxableIncome);
+
+                const netSalary = grossSalary - (nssfDeductions + nhifDeductions + payee);
+                return netSalary;
+            }
+        }
+
+        // Example usage
+        const basicSalary = 50000;
+        const benefits = 10000;
+
+        const payroll = new Payroll(basicSalary, benefits);
+        const netSalary = payroll.calculateNetSalary();
+
+        console.log(`Net Salary: ${netSalary} Kshs`);
+
+    </script>
+</body>
+
+</html>
