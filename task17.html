@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NHIF, NSSF, and PAYEE Calculator</title>
 </head>
-
 <body>
     <h1>NHIF, NSSF, and PAYEE Calculator</h1>
     <div>
@@ -27,18 +25,18 @@
             const basicSalary = parseFloat(document.getElementById('basicSalary').value);
             const benefits = parseFloat(document.getElementById('benefits').value);
 
+            console.log("basicSalary:", basicSalary);
+            console.log("benefits:", benefits);
+
             const grossSalary = basicSalary + benefits;
 
-            // Calculate NHIF contribution
-            // ... (same code as before) ...
-
-            // Calculate NSSF contribution
-            // ... (same code as before) ...
-
-            // Calculate PAYEE
             const nssfContribution = calculateNSSFContribution(grossSalary);
             const taxableIncome = grossSalary - nssfContribution;
             const payee = calculatePayee(taxableIncome);
+
+            console.log("nssfContribution:", nssfContribution);
+            console.log("taxableIncome:", taxableIncome);
+            console.log("payee:", payee);
 
             document.getElementById('nhifResult').textContent = `NHIF Contribution: ${nhifContribution} Kshs`;
             document.getElementById('nssfResult').textContent = `NSSF Contribution: ${nssfContribution} Kshs`;
@@ -64,12 +62,10 @@
                 payee += (taxableIncome - 24000) * 0.1;
             }
 
-            // Subtract personal relief
             payee -= 2400;
 
             return Math.max(payee, 0);
         }
     </script>
 </body>
-
 </html>
