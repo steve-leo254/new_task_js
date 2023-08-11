@@ -10,23 +10,23 @@
 <body>
     <h1>Task13.</h1>
     <script>
-            let remainingTries = 3;
+        let remainingTries = 3;
 
-function attemptLogin() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+        function attemptLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-    if (email === 'admin@mail.com' && password === 'Admin@123') {
-        document.getElementById('message').textContent = 'Login is Successful';
-    } else {
-        remainingTries--;
-        if (remainingTries > 0) {
-            document.getElementById('message').textContent = `Invalid username or password. Remaining tries: ${remainingTries}`;
-        } else {
-            document.getElementById('message').textContent = 'You have been blocked.';
+            if (email === 'admin@mail.com' && password === 'Admin@123') {
+                document.getElementById('message').textContent = 'Login is Successful';
+            } else {
+                remainingTries--;
+                if (remainingTries > 0) {
+                    document.getElementById('message').textContent = `Invalid username or password. Remaining tries: ${remainingTries}`;
+                } else {
+                    document.getElementById('message').textContent = 'You have been blocked.';
+                }
+            }
         }
-    }
-}
     </script>
 </body>
 

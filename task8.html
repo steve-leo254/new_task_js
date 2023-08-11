@@ -10,26 +10,34 @@
 <body>
     <h1>Task8.</h1>
     <script>
-        function calculateDemeritPoints(speed) {
+        function checkSpeed(speed) {
             const speedLimit = 70;
-            const kmPerDemeritPoint = 5;
+            const demeritPointsPer5Kmh = 1;
             const maxDemeritPoints = 12;
 
             if (speed < speedLimit) {
-                console.log("Ok");
+                return "Ok";
             } else {
-                const demeritPoints = Math.floor((speed - speedLimit) / kmPerDemeritPoint);
+                const demeritPoints = Math.floor((speed - speedLimit) / 5);
 
-                if (demeritPoints > maxDemeritPoints) {
-                    console.log("License suspended");
+                if (demeritPoints <= maxDemeritPoints) {
+                    return `Points: ${demeritPoints}`;
                 } else {
-                    console.log("Points: " + demeritPoints);
+                    return "License suspended";
                 }
             }
         }
 
-        const carSpeed = 80;
-        calculateDemeritPoints(carSpeed);
+        const inputSpeed = prompt("Enter the speed of the car (in km/h):");
+        const speed = parseFloat(inputSpeed);
+
+        if (!isNaN(speed)) {
+            const result = checkSpeed(speed);
+            console.log(result);
+        } else {
+            console.log("Invalid input. Please enter a valid number for speed.");
+        }
+
 
     </script>
 </body>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <H1>Goverment Calculator</H1>
+     <script>
+        function calculate_nhif(gross_salary) {
+            // NHIF calculation logic based on the provided link
+            // You need to fetch the current NHIF rate from the link
+            var nhif_rate = 0.05;
+            var nhif_amount = gross_salary * nhif_rate;
+            return nhif_amount;
+        }
+
+        function calculate_nssf(gross_salary) {
+            var nssf_rate = 0.06;
+            var max_nssf = 18000;
+            var nssf_amount = Math.min(gross_salary * nssf_rate, max_nssf);
+            return nssf_amount;
+        }
+
+        function calculate_nhdf(gross_salary) {
+            var nhdf_rate = 0.015;
+            var nhdf_amount = gross_salary * nhdf_rate;
+            return nhdf_amount;
+        }
+
+        function calculate_taxable_income(gross_salary, nssf_amount, nhdf_amount) {
+            var taxable_income = gross_salary - (nssf_amount + nhdf_amount);
+            return taxable_income;
+        }
+
+        function calculate_payee(taxable_income) {
+            // PAYEE calculation logic based on the provided link
+            // You need to fetch the current PAYEE tax rate from the link
+            var payee_rate = 0.1;
+            var payee_amount = taxable_income * payee_rate;
+            return payee_amount;
+        }
+
+        function calculate_net_salary(gross_salary, nhif_amount, nhdf_amount, nssf_amount, payee_amount) {
+            var net_salary = gross_salary - (nhif_amount + nhdf_amount + nssf_amount + payee_amount);
+            return net_salary;
+        }
+
+        var basic_salary = parseFloat(prompt("Enter basic salary: "));
+        var benefits = parseFloat(prompt("Enter benefits: "));
+
+        var gross_salary = basic_salary + benefits;
+
+        var nhif_amount = calculate_nhif(gross_salary);
+        var nssf_amount = calculate_nssf(gross_salary);
+        var nhdf_amount = calculate_nhdf(gross_salary);
+
+        var taxable_income = calculate_taxable_income(gross_salary, nssf_amount, nhdf_amount);
+        var payee_amount = calculate_payee(taxable_income);
+
+        var net_salary = calculate_net_salary(gross_salary, nhif_amount, nhdf_amount, nssf_amount, payee_amount);
+
+        console.log("Gross Salary: " + gross_salary);
+        console.log("NHIF Amount: " + nhif_amount);
+        console.log("NSSF Amount: " + nssf_amount);
+        console.log("NHDF Amount: " + nhdf_amount);
+        console.log("Taxable Income: " + taxable_income);
+        console.log("PAYEE Amount: " + payee_amount);
+        console.log("Net Salary: " + net_salary);
+    </script>
+    
+</body>
+</html>
